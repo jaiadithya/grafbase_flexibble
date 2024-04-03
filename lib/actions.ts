@@ -2,10 +2,9 @@ import { createUserMutation, getUserQuery } from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 
 
-const isProduction = process.env.NODE_ENV === 'production';
-const apiUrl = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_URL || '' : 'http://127.0.0.1:4000/graphql';
-const apiKey = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_KEY || '' : 'letmein';
-const serverUrl = isProduction ? process.env.NEXT_PUBLIC_SERVER_URL : 'http://localhost:3000';
+const apiUrl =  "https://grafbaseflexibble-main-jaiadithya.grafbase.app/graphql" ;
+const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTcxMzUwOTcsImlzcyI6ImdyYWZiYXNlIiwiYXVkIjoiMDFIQ0pKNFg4QTM1UFBQRjBQRDlSTTQ4UE0iLCJqdGkiOiIwMUhDSko0WE1UU0JUOVlXQkJBMVRBMURORyIsImVudiI6InByb2R1Y3Rpb24iLCJwdXJwb3NlIjoicHJvamVjdC1hcGkta2V5In0.u4cTlKUzhY75-x7v31W9tjYvMJ-ds5IUdYMq0usSHSE";
+const serverUrl =  process.env.NEXT_PUBLIC_SERVER_URL;
 
 
 const client= new GraphQLClient(apiUrl)
@@ -13,7 +12,6 @@ const client= new GraphQLClient(apiUrl)
 const makeGraphQLRequest = async(query: string, variables = {})=>{
     try{
         return await client.request(query, variables)
-
     }
     catch (error) {
         throw(error);
